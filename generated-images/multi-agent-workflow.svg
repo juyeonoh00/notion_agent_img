@@ -1,0 +1,238 @@
+<svg width="1200" height="900" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Gradients for each agent -->
+    <radialGradient id="orchestratorGradient" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#F59E0B;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#D97706;stop-opacity:1" />
+    </radialGradient>
+
+    <radialGradient id="codeAgentGradient" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#7C3AED;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#312E81;stop-opacity:1" />
+    </radialGradient>
+
+    <radialGradient id="reviewAgentGradient" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#D946EF;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#6B21A8;stop-opacity:1" />
+    </radialGradient>
+
+    <radialGradient id="notionAgentGradient" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#06B6D4;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0369A1;stop-opacity:1" />
+    </radialGradient>
+
+    <radialGradient id="imageAgentGradient" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#F472B6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#BE185D;stop-opacity:1" />
+    </radialGradient>
+
+    <radialGradient id="promptAgentGradient" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#10B981;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#059669;stop-opacity:1" />
+    </radialGradient>
+
+    <!-- Filters -->
+    <filter id="agentShadow">
+      <feDropShadow dx="0" dy="15" stdDeviation="35" flood-opacity="0.15"/>
+    </filter>
+
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Arrow markers -->
+    <marker id="arrowOrange" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto">
+      <polygon points="0 0, 10 5, 0 10" fill="#F59E0B"/>
+    </marker>
+    <marker id="arrowPurple" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto">
+      <polygon points="0 0, 10 5, 0 10" fill="#7C3AED"/>
+    </marker>
+    <marker id="arrowPink" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto">
+      <polygon points="0 0, 10 5, 0 10" fill="#D946EF"/>
+    </marker>
+    <marker id="arrowCyan" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto">
+      <polygon points="0 0, 10 5, 0 10" fill="#06B6D4"/>
+    </marker>
+    <marker id="arrowRose" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto">
+      <polygon points="0 0, 10 5, 0 10" fill="#F472B6"/>
+    </marker>
+    <marker id="arrowGreen" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto">
+      <polygon points="0 0, 10 5, 0 10" fill="#10B981"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="900" fill="#FAFAFA"/>
+
+  <!-- Radial background gradient -->
+  <defs>
+    <radialGradient id="bgRadial" cx="50%" cy="50%" r="60%">
+      <stop offset="0%" style="stop-color:#FFFFFF;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#F5F5F5;stop-opacity:1" />
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="900" fill="url(#bgRadial)"/>
+
+  <!-- Title -->
+  <text x="600" y="60" font-family="Arial, sans-serif" font-size="36" font-weight="700" fill="#1F2937" text-anchor="middle">
+    Multi-Agent 협업 시스템
+  </text>
+  <text x="600" y="95" font-family="Arial, sans-serif" font-size="16" fill="#6B7280" text-anchor="middle">
+    5개의 전문 AI 에이전트가 협업하여 문서를 생성합니다
+  </text>
+
+  <!-- Center: Orchestrator -->
+  <g transform="translate(600, 450)">
+    <!-- Outer glow circle -->
+    <circle cx="0" cy="0" r="110" fill="url(#orchestratorGradient)" opacity="0.1"/>
+
+    <!-- Main circle -->
+    <circle cx="0" cy="0" r="100" fill="url(#orchestratorGradient)" filter="url(#agentShadow)"/>
+    <circle cx="0" cy="0" r="98" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="2"/>
+
+    <!-- Icon: Command center -->
+    <g transform="translate(-30, -30)">
+      <circle cx="30" cy="30" r="25" fill="none" stroke="white" stroke-width="3" opacity="0.9"/>
+      <circle cx="30" cy="30" r="5" fill="white"/>
+      <line x1="30" y1="5" x2="30" y2="25" stroke="white" stroke-width="2.5"/>
+      <line x1="5" y1="30" x2="25" y2="30" stroke="white" stroke-width="2.5"/>
+      <line x1="55" y1="30" x2="35" y2="30" stroke="white" stroke-width="2.5"/>
+      <line x1="30" y1="55" x2="30" y2="35" stroke="white" stroke-width="2.5"/>
+      <circle cx="30" cy="5" r="3" fill="white"/>
+      <circle cx="5" cy="30" r="3" fill="white"/>
+      <circle cx="55" cy="30" r="3" fill="white"/>
+      <circle cx="30" cy="55" r="3" fill="white"/>
+    </g>
+
+    <!-- Label -->
+    <text x="0" y="65" font-family="Arial, sans-serif" font-size="20" font-weight="700" fill="white" text-anchor="middle">Orchestrator</text>
+    <text x="0" y="85" font-family="Arial, sans-serif" font-size="13" fill="white" opacity="0.9" text-anchor="middle">중앙 조율</text>
+  </g>
+
+  <!-- Agent 1: Code Agent (Top) -->
+  <g transform="translate(600, 200)">
+    <circle cx="0" cy="0" r="70" fill="url(#codeAgentGradient)" filter="url(#agentShadow)"/>
+    <circle cx="0" cy="0" r="68" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="2"/>
+
+    <!-- Icon: Code brackets -->
+    <g transform="scale(1.5)">
+      <text x="0" y="10" font-family="Consolas, monospace" font-size="28" font-weight="700" fill="white" text-anchor="middle">&lt;/&gt;</text>
+    </g>
+
+    <!-- Label -->
+    <text x="0" y="45" font-family="Arial, sans-serif" font-size="16" font-weight="600" fill="white" text-anchor="middle">Code Agent</text>
+    <text x="0" y="62" font-family="Arial, sans-serif" font-size="12" fill="white" opacity="0.9" text-anchor="middle">코드 분석</text>
+  </g>
+
+  <!-- Agent 2: Review Agent (Right-Top) -->
+  <g transform="translate(850, 300)">
+    <circle cx="0" cy="0" r="70" fill="url(#reviewAgentGradient)" filter="url(#agentShadow)"/>
+    <circle cx="0" cy="0" r="68" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="2"/>
+
+    <!-- Icon: Star with checkmark -->
+    <polygon points="0,-20 5,-6 20,-6 8,3 13,18 0,9 -13,18 -8,3 -20,-6 -5,-6" fill="white" opacity="0.95"/>
+    <path d="M -5,5 L -2,8 L 5,1" stroke="#D946EF" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+
+    <!-- Label -->
+    <text x="0" y="45" font-family="Arial, sans-serif" font-size="16" font-weight="600" fill="white" text-anchor="middle">Review Agent</text>
+    <text x="0" y="62" font-family="Arial, sans-serif" font-size="12" fill="white" opacity="0.9" text-anchor="middle">품질 검토</text>
+  </g>
+
+  <!-- Agent 3: Notion Agent (Right-Bottom) -->
+  <g transform="translate(850, 600)">
+    <circle cx="0" cy="0" r="70" fill="url(#notionAgentGradient)" filter="url(#agentShadow)"/>
+    <circle cx="0" cy="0" r="68" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="2"/>
+
+    <!-- Icon: Upload cloud -->
+    <g transform="translate(-18, -15)">
+      <path d="M 10,12 Q 10,5 18,5 Q 26,5 26,12 L 24,12 Q 24,7 18,7 Q 12,7 12,12 Z" fill="white"/>
+      <path d="M 8,12 Q 8,8 12,8 L 12,12 L 8,12 Z" fill="white"/>
+      <path d="M 26,12 Q 30,12 30,16 Q 30,20 26,20 L 10,20 Q 6,20 6,16 Q 6,12 10,12" fill="white"/>
+      <path d="M 18,14 L 18,26 M 14,18 L 18,14 L 22,18" stroke="#0369A1" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    </g>
+
+    <!-- Label -->
+    <text x="0" y="45" font-family="Arial, sans-serif" font-size="16" font-weight="600" fill="white" text-anchor="middle">Notion Agent</text>
+    <text x="0" y="62" font-family="Arial, sans-serif" font-size="12" fill="white" opacity="0.9" text-anchor="middle">Notion 업로드</text>
+  </g>
+
+  <!-- Agent 4: Image Agent (Left-Bottom) -->
+  <g transform="translate(350, 600)">
+    <circle cx="0" cy="0" r="70" fill="url(#imageAgentGradient)" filter="url(#agentShadow)"/>
+    <circle cx="0" cy="0" r="68" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="2"/>
+
+    <!-- Icon: Image/palette -->
+    <g transform="translate(-18, -15)">
+      <rect x="4" y="4" width="28" height="24" rx="3" fill="white"/>
+      <circle cx="12" cy="12" r="3" fill="#F472B6"/>
+      <polygon points="4,22 12,14 20,18 28,12 28,28 4,28" fill="#BE185D" opacity="0.4"/>
+    </g>
+
+    <!-- Label -->
+    <text x="0" y="45" font-family="Arial, sans-serif" font-size="16" font-weight="600" fill="white" text-anchor="middle">Image Agent</text>
+    <text x="0" y="62" font-family="Arial, sans-serif" font-size="12" fill="white" opacity="0.9" text-anchor="middle">이미지 생성</text>
+  </g>
+
+  <!-- Agent 5: Prompt Agent (Left-Top) -->
+  <g transform="translate(350, 300)">
+    <circle cx="0" cy="0" r="70" fill="url(#promptAgentGradient)" filter="url(#agentShadow)"/>
+    <circle cx="0" cy="0" r="68" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="2"/>
+
+    <!-- Icon: Settings gear -->
+    <g transform="translate(-15, -15)">
+      <circle cx="15" cy="15" r="8" fill="white"/>
+      <circle cx="15" cy="15" r="4" fill="#059669"/>
+      <rect x="13" y="0" width="4" height="6" fill="white"/>
+      <rect x="13" y="24" width="4" height="6" fill="white"/>
+      <rect x="0" y="13" width="6" height="4" fill="white"/>
+      <rect x="24" y="13" width="6" height="4" fill="white"/>
+      <rect x="4" y="4" width="4" height="4" fill="white" transform="rotate(45 6 6)"/>
+      <rect x="22" y="4" width="4" height="4" fill="white" transform="rotate(45 24 6)"/>
+      <rect x="4" y="22" width="4" height="4" fill="white" transform="rotate(45 6 24)"/>
+      <rect x="22" y="22" width="4" height="4" fill="white" transform="rotate(45 24 24)"/>
+    </g>
+
+    <!-- Label -->
+    <text x="0" y="45" font-family="Arial, sans-serif" font-size="16" font-weight="600" fill="white" text-anchor="middle">Prompt Agent</text>
+    <text x="0" y="62" font-family="Arial, sans-serif" font-size="12" fill="white" opacity="0.9" text-anchor="middle">프롬프트 조정</text>
+  </g>
+
+  <!-- Connections: Orchestrator to Agents -->
+  <!-- To Code Agent -->
+  <path d="M 600,350 L 600,270" stroke="#7C3AED" stroke-width="3" fill="none" marker-end="url(#arrowPurple)" opacity="0.7"/>
+  <path d="M 600,270 L 600,350" stroke="#F59E0B" stroke-width="3" fill="none" marker-end="url(#arrowOrange)" opacity="0.5" stroke-dasharray="5,5"/>
+
+  <!-- To Review Agent -->
+  <path d="M 680,400 Q 750,350 780,330" stroke="#D946EF" stroke-width="3" fill="none" marker-end="url(#arrowPink)" opacity="0.7"/>
+  <path d="M 780,330 Q 750,350 680,400" stroke="#F59E0B" stroke-width="3" fill="none" marker-end="url(#arrowOrange)" opacity="0.5" stroke-dasharray="5,5"/>
+
+  <!-- To Notion Agent -->
+  <path d="M 680,500 Q 750,550 780,570" stroke="#06B6D4" stroke-width="3" fill="none" marker-end="url(#arrowCyan)" opacity="0.7"/>
+  <path d="M 780,570 Q 750,550 680,500" stroke="#F59E0B" stroke-width="3" fill="none" marker-end="url(#arrowOrange)" opacity="0.5" stroke-dasharray="5,5"/>
+
+  <!-- To Image Agent -->
+  <path d="M 520,500 Q 450,550 420,570" stroke="#F472B6" stroke-width="3" fill="none" marker-end="url(#arrowRose)" opacity="0.7"/>
+  <path d="M 420,570 Q 450,550 520,500" stroke="#F59E0B" stroke-width="3" fill="none" marker-end="url(#arrowOrange)" opacity="0.5" stroke-dasharray="5,5"/>
+
+  <!-- To Prompt Agent -->
+  <path d="M 520,400 Q 450,350 420,330" stroke="#10B981" stroke-width="3" fill="none" marker-end="url(#arrowGreen)" opacity="0.7"/>
+  <path d="M 420,330 Q 450,350 520,400" stroke="#F59E0B" stroke-width="3" fill="none" marker-end="url(#arrowOrange)" opacity="0.5" stroke-dasharray="5,5"/>
+
+  <!-- Legend -->
+  <g transform="translate(100, 780)">
+    <text x="0" y="0" font-family="Arial, sans-serif" font-size="14" font-weight="600" fill="#6B7280">범례:</text>
+    <line x1="0" y1="15" x2="40" y2="15" stroke="#7C3AED" stroke-width="3" opacity="0.7"/>
+    <text x="50" y="20" font-family="Arial, sans-serif" font-size="12" fill="#6B7280">요청 전달</text>
+    <line x1="150" y1="15" x2="190" y2="15" stroke="#F59E0B" stroke-width="3" opacity="0.5" stroke-dasharray="5,5"/>
+    <text x="200" y="20" font-family="Arial, sans-serif" font-size="12" fill="#6B7280">결과 반환</text>
+  </g>
+
+  <!-- Footer note -->
+  <text x="600" y="850" font-family="Arial, sans-serif" font-size="13" fill="#9CA3AF" text-anchor="middle">
+    모든 에이전트는 Orchestrator를 통해 조율되며, 병렬로 작업을 수행합니다
+  </text>
+</svg>
