@@ -1,0 +1,164 @@
+<svg width="1200" height="300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0F172A;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1E293B;stop-opacity:1" />
+    </linearGradient>
+
+    <linearGradient id="purpleGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#6B21A8;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#06B6D4;stop-opacity:1" />
+    </linearGradient>
+
+    <linearGradient id="codeGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#7C3AED;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#A855F7;stop-opacity:1" />
+    </linearGradient>
+
+    <linearGradient id="notionGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#2563EB;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0EA5E9;stop-opacity:1" />
+    </linearGradient>
+
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="300" fill="url(#bgGradient)"/>
+
+  <!-- Grid pattern -->
+  <defs>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#334155" stroke-width="0.5" opacity="0.2"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="300" fill="url(#grid)"/>
+
+  <!-- Title -->
+  <text x="600" y="60" font-family="Arial, sans-serif" font-size="42" font-weight="700" fill="white" text-anchor="middle" filter="url(#glow)">
+    Multi-Agent Documentation System
+  </text>
+
+  <!-- Subtitle -->
+  <text x="600" y="95" font-family="Arial, sans-serif" font-size="18" fill="#94A3B8" text-anchor="middle">
+    프로젝트 문서 작성, 이제 AI와 대화로 끝내세요
+  </text>
+
+  <!-- Flow Cards -->
+
+  <!-- Code Card -->
+  <g transform="translate(100, 140)">
+    <rect width="160" height="100" rx="16" fill="#1E293B" filter="url(#shadow)" opacity="0.9"/>
+    <rect width="160" height="100" rx="16" fill="url(#codeGradient)" opacity="0.15"/>
+    <rect width="160" height="100" rx="16" fill="none" stroke="url(#codeGradient)" stroke-width="2"/>
+
+    <!-- Code Icon -->
+    <g transform="translate(80, 35)">
+      <path d="M-15,-10 L-25,0 L-15,10 M15,-10 L25,0 L15,10 M5,-15 L-5,15" stroke="white" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+    </g>
+
+    <text x="80" y="80" font-family="Arial, sans-serif" font-size="16" font-weight="600" fill="white" text-anchor="middle">
+      코드 분석
+    </text>
+  </g>
+
+  <!-- Arrow 1 -->
+  <g transform="translate(280, 190)">
+    <line x1="0" y1="0" x2="80" y2="0" stroke="url(#purpleGradient)" stroke-width="3" opacity="0.6"/>
+    <polygon points="80,0 70,-5 70,5" fill="url(#purpleGradient)" opacity="0.6"/>
+  </g>
+
+  <!-- AI Brain Card -->
+  <g transform="translate(380, 140)">
+    <rect width="160" height="100" rx="16" fill="#1E293B" filter="url(#shadow)" opacity="0.9"/>
+    <rect width="160" height="100" rx="16" fill="url(#purpleGradient)" opacity="0.2"/>
+    <rect width="160" height="100" rx="16" fill="none" stroke="url(#purpleGradient)" stroke-width="2"/>
+
+    <!-- AI Brain Icon -->
+    <g transform="translate(80, 35)">
+      <circle cx="0" cy="0" r="15" fill="none" stroke="white" stroke-width="2.5"/>
+      <path d="M-8,-3 L-3,2 L8,-8 M-2,5 L2,10" stroke="white" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+      <!-- Neural connections -->
+      <circle cx="-10" cy="-10" r="2" fill="white" opacity="0.7"/>
+      <circle cx="10" cy="-10" r="2" fill="white" opacity="0.7"/>
+      <circle cx="-10" cy="10" r="2" fill="white" opacity="0.7"/>
+      <circle cx="10" cy="10" r="2" fill="white" opacity="0.7"/>
+    </g>
+
+    <text x="80" y="80" font-family="Arial, sans-serif" font-size="16" font-weight="600" fill="white" text-anchor="middle">
+      AI 문서 생성
+    </text>
+  </g>
+
+  <!-- Arrow 2 -->
+  <g transform="translate(560, 190)">
+    <line x1="0" y1="0" x2="80" y2="0" stroke="url(#purpleGradient)" stroke-width="3" opacity="0.6"/>
+    <polygon points="80,0 70,-5 70,5" fill="url(#purpleGradient)" opacity="0.6"/>
+  </g>
+
+  <!-- Markdown Card -->
+  <g transform="translate(660, 140)">
+    <rect width="160" height="100" rx="16" fill="#1E293B" filter="url(#shadow)" opacity="0.9"/>
+    <rect width="160" height="100" rx="16" fill="url(#codeGradient)" opacity="0.15"/>
+    <rect width="160" height="100" rx="16" fill="none" stroke="url(#codeGradient)" stroke-width="2"/>
+
+    <!-- Document Icon -->
+    <g transform="translate(80, 35)">
+      <rect x="-10" y="-12" width="20" height="24" rx="2" fill="none" stroke="white" stroke-width="2"/>
+      <line x1="-6" y1="-6" x2="6" y2="-6" stroke="white" stroke-width="1.5"/>
+      <line x1="-6" y1="0" x2="6" y2="0" stroke="white" stroke-width="1.5"/>
+      <line x1="-6" y1="6" x2="3" y2="6" stroke="white" stroke-width="1.5"/>
+    </g>
+
+    <text x="80" y="80" font-family="Arial, sans-serif" font-size="16" font-weight="600" fill="white" text-anchor="middle">
+      Markdown
+    </text>
+  </g>
+
+  <!-- Arrow 3 -->
+  <g transform="translate(840, 190)">
+    <line x1="0" y1="0" x2="80" y2="0" stroke="url(#notionGradient)" stroke-width="3" opacity="0.6"/>
+    <polygon points="80,0 70,-5 70,5" fill="url(#notionGradient)" opacity="0.6"/>
+  </g>
+
+  <!-- Notion Card -->
+  <g transform="translate(940, 140)">
+    <rect width="160" height="100" rx="16" fill="#1E293B" filter="url(#shadow)" opacity="0.9"/>
+    <rect width="160" height="100" rx="16" fill="url(#notionGradient)" opacity="0.2"/>
+    <rect width="160" height="100" rx="16" fill="none" stroke="url(#notionGradient)" stroke-width="2"/>
+
+    <!-- Upload Icon -->
+    <g transform="translate(80, 35)">
+      <path d="M-10,5 L0,-5 L10,5 M0,-5 L0,15" stroke="white" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="-12" y1="15" x2="12" y2="15" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+    </g>
+
+    <text x="80" y="80" font-family="Arial, sans-serif" font-size="16" font-weight="600" fill="white" text-anchor="middle">
+      Notion 업로드
+    </text>
+  </g>
+
+  <!-- Decorative dots -->
+  <circle cx="50" cy="50" r="3" fill="#6B21A8" opacity="0.4">
+    <animate attributeName="opacity" values="0.4;0.8;0.4" dur="3s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="1150" cy="50" r="3" fill="#06B6D4" opacity="0.4">
+    <animate attributeName="opacity" values="0.8;0.4;0.8" dur="3s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="50" cy="250" r="3" fill="#7C3AED" opacity="0.4">
+    <animate attributeName="opacity" values="0.6;1;0.6" dur="2.5s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="1150" cy="250" r="3" fill="#0EA5E9" opacity="0.4">
+    <animate attributeName="opacity" values="1;0.6;1" dur="2.5s" repeatCount="indefinite"/>
+  </circle>
+</svg>
