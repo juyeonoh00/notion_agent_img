@@ -1,0 +1,137 @@
+<svg viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <defs>
+    <!-- Background Radial Gradient -->
+    <radialGradient id="radialGradientBackground" cx="50%" cy="50%" r="75%" fx="50%" fy="50%">
+      <stop offset="0%" style="stop-color:#FAFAFA;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FFFFFF;stop-opacity:1" />
+    </radialGradient>
+
+    <!-- Card Shadow Filter -->
+    <filter id="cardShadows" x="-50%" y="-50%" width="200%" height="200%">
+      <!-- First shadow (larger, softer) -->
+      <feDropShadow dx="0" dy="10" stdDeviation="12" flood-color="rgba(0,0,0,0.12)" />
+      <!-- Second shadow (smaller, sharper) -->
+      <feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="rgba(0,0,0,0.08)" />
+    </filter>
+
+    <!-- Icon Glow Filter -->
+    <filter id="iconGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feDropShadow dx="0" dy="0" stdDeviation="3" flood-color="white" flood-opacity="0.6"/>
+    </filter>
+
+    <!-- Icon Gradients -->
+    <linearGradient id="userIconGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#312E81" />
+      <stop offset="100%" stop-color="#7C3AED" />
+    </linearGradient>
+    <linearGradient id="terminalIconGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6B21A8" />
+      <stop offset="100%" stop-color="#D946EF" />
+    </linearGradient>
+    <linearGradient id="aiIconGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#BE185D" />
+      <stop offset="100%" stop-color="#F472B6" />
+    </linearGradient>
+    <linearGradient id="notionIconGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0369A1" />
+      <stop offset="100%" stop-color="#06B6D4" />
+    </linearGradient>
+
+    <!-- Arrow Gradients (matching destination icon gradient - from start to end of destination gradient) -->
+    <linearGradient id="arrow1Gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6B21A8" />
+      <stop offset="100%" stop-color="#D946EF" />
+    </linearGradient>
+    <linearGradient id="arrow2Gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#BE185D" />
+      <stop offset="100%" stop-color="#F472B6" />
+    </linearGradient>
+    <linearGradient id="arrow3Gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0369A1" />
+      <stop offset="100%" stop-color="#06B6D4" />
+    </linearGradient>
+    
+    <!-- Arrowhead Marker -->
+    <marker id="arrowhead" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="contextStroke" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+
+  </defs>
+
+  <!-- Background -->
+  <rect x="0" y="0" width="800" height="600" fill="url(#radialGradientBackground)" />
+
+  <!-- Adjusted dimensions for layout:
+       Card width: 160px, height: 100px. Spacing: 40px.
+       Total horizontal content width: 4*160 + 3*40 = 640 + 120 = 760px.
+       Cards are centered horizontally: (800 - 760) / 2 = 20px offset from left.
+       Cards are centered vertically: (600 - 100) / 2 = 250px offset from top.
+       Icon size: 48px (visual diameter/side for a 24x24 icon scaled by 2).
+       Text size: 20px.
+  -->
+
+  <!-- Card 1: 사용자 -->
+  <g transform="translate(20, 250)">
+    <rect x="0" y="0" width="160" height="100" rx="20" ry="20" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.2)" stroke-width="1" filter="url(#cardShadows)"/>
+    <!-- Icon: User (Material design person icon, 24x24 path scaled to 48px, centered) -->
+    <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"
+          transform="translate(80, 35) scale(2) translate(-12, -12)" fill="url(#userIconGradient)" filter="url(#iconGlow)"/>
+    <!-- Text -->
+    <text x="80" y="80" text-anchor="middle" fill="white" font-family="sans-serif" font-size="20" font-weight="600" letter-spacing="0.5">사용자</text>
+  </g>
+
+  <!-- Card 2: /summary 명령 -->
+  <g transform="translate(220, 250)">
+    <rect x="0" y="0" width="160" height="100" rx="20" ry="20" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.2)" stroke-width="1" filter="url(#cardShadows)"/>
+    <!-- Icon: Terminal (Material design code/terminal icon, 24x24 path scaled to 48px, centered) -->
+    <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14H4V8h16v10zm-8-7l-4 4 4 4v-8z"
+          transform="translate(80, 35) scale(2) translate(-12, -12)" fill="url(#terminalIconGradient)" filter="url(#iconGlow)"/>
+    <!-- Text -->
+    <text x="80" y="80" text-anchor="middle" fill="white" font-family="sans-serif" font-size="20" font-weight="600" letter-spacing="0.5">/summary 명령</text>
+  </g>
+
+  <!-- Card 3: AI 문서 생성 -->
+  <g transform="translate(420, 250)">
+    <rect x="0" y="0" width="160" height="100" rx="20" ry="20" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.2)" stroke-width="1" filter="url(#cardShadows)"/>
+    <!-- Icon: AI Sparkle (Material design star icon, 24x24 path scaled to 48px, centered) -->
+    <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"
+          transform="translate(80, 35) scale(2) translate(-12, -12)" fill="url(#aiIconGradient)" filter="url(#iconGlow)"/>
+    <!-- Text -->
+    <text x="80" y="80" text-anchor="middle" fill="white" font-family="sans-serif" font-size="20" font-weight="600" letter-spacing="0.5">AI 문서 생성</text>
+  </g>
+
+  <!-- Card 4: Notion 업로드 -->
+  <g transform="translate(620, 250)">
+    <rect x="0" y="0" width="160" height="100" rx="20" ry="20" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.2)" stroke-width="1" filter="url(#cardShadows)"/>
+    <!-- Icon: Upload (Material design upload icon, 24x24 path scaled to 48px, centered) -->
+    <path d="M9 16h6V10h4L12 2 5 10h4v6zm-4 2h14v2H5v-2z"
+          transform="translate(80, 35) scale(2) translate(-12, -12)" fill="url(#notionIconGradient)" filter="url(#iconGlow)"/>
+    <!-- Text -->
+    <text x="80" y="80" text-anchor="middle" fill="white" font-family="sans-serif" font-size="20" font-weight="600" letter-spacing="0.5">Notion 업로드</text>
+  </g>
+
+  <!-- Arrows (elegant curved connectors) -->
+  <!-- Start/End points for arrows:
+       Arrow 1: From right edge of Card 1 (180, 300) to left edge of Card 2 (220, 300)
+       Arrow 2: From right edge of Card 2 (380, 300) to left edge of Card 3 (420, 300)
+       Arrow 3: From right edge of Card 3 (580, 300) to left edge of Card 4 (620, 300)
+       Control points create a subtle upward arc.
+  -->
+  
+  <!-- Arrow 1: Card 1 to Card 2 -->
+  <path d="M 180 300 C 190 290, 210 290, 220 300" 
+        fill="none" stroke="url(#arrow1Gradient)" stroke-width="2.5" marker-end="url(#arrowhead)" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Arrow 2: Card 2 to Card 3 -->
+  <path d="M 380 300 C 390 290, 410 290, 420 300" 
+        fill="none" stroke="url(#arrow2Gradient)" stroke-width="2.5" marker-end="url(#arrowhead)" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Arrow 3: Card 3 to Card 4 -->
+  <path d="M 580 300 C 590 290, 610 290, 620 300" 
+        fill="none" stroke="url(#arrow3Gradient)" stroke-width="2.5" marker-end="url(#arrowhead)" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Subtle connecting line beneath cards showing progress flow -->
+  <!-- Connects the horizontal center of the card group, slightly below the cards. -->
+  <!-- Line Y position: 250 (card_y) + 100 (card_height) + 20 (offset below card) = 370 -->
+  <!-- Line X range: From center of Card 1 (100) to center of Card 4 (700). -->
+  <line x1="100" y1="370" x2="700" y2="370" stroke="#E0E0E0" stroke-width="1" stroke-dasharray="4 4" stroke-linecap="round"/>
+
+</svg>
