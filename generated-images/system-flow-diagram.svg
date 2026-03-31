@@ -1,0 +1,203 @@
+<svg width="1400" height="400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Gradients for each stage -->
+    <linearGradient id="stage1Gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1E293B;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#475569;stop-opacity:1" />
+    </linearGradient>
+
+    <linearGradient id="stage2Gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#312E81;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#7C3AED;stop-opacity:1" />
+    </linearGradient>
+
+    <linearGradient id="stage3Gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#6B21A8;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#D946EF;stop-opacity:1" />
+    </linearGradient>
+
+    <linearGradient id="stage4Gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#BE185D;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#F472B6;stop-opacity:1" />
+    </linearGradient>
+
+    <linearGradient id="stage5Gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0369A1;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#06B6D4;stop-opacity:1" />
+    </linearGradient>
+
+    <!-- Filters -->
+    <filter id="cardShadow">
+      <feDropShadow dx="0" dy="10" stdDeviation="25" flood-opacity="0.12"/>
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-opacity="0.08"/>
+    </filter>
+
+    <!-- Arrow markers -->
+    <marker id="arrowGray" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto">
+      <polygon points="0 0, 10 5, 0 10" fill="#9CA3AF"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1400" height="400" fill="#FAFAFA"/>
+
+  <!-- Title -->
+  <text x="700" y="50" font-family="Arial, sans-serif" font-size="32" font-weight="700" fill="#1F2937" text-anchor="middle">
+    시스템 처리 흐름
+  </text>
+
+  <!-- Stage 1: 코드 입력 -->
+  <g transform="translate(80, 120)">
+    <!-- Number badge -->
+    <circle cx="90" cy="0" r="18" fill="#1E293B"/>
+    <text x="90" y="7" font-family="Arial, sans-serif" font-size="14" font-weight="700" fill="white" text-anchor="middle">1</text>
+
+    <!-- Card -->
+    <rect x="0" y="20" width="180" height="140" rx="20" fill="url(#stage1Gradient)" filter="url(#cardShadow)"/>
+    <rect x="2" y="22" width="176" height="136" rx="19" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+
+    <!-- Icon: Folder with code -->
+    <g transform="translate(70, 55)">
+      <path d="M 0,5 L 0,35 L 40,35 L 40,10 L 15,10 L 10,5 Z" fill="white" opacity="0.95"/>
+      <text x="20" y="27" font-family="Consolas, monospace" font-size="14" fill="#1E293B" text-anchor="middle">&lt;/&gt;</text>
+    </g>
+
+    <!-- Label -->
+    <text x="90" y="115" font-family="Arial, sans-serif" font-size="20" font-weight="700" fill="white" text-anchor="middle">코드 입력</text>
+    <text x="90" y="140" font-family="Arial, sans-serif" font-size="13" fill="white" opacity="0.9" text-anchor="middle">프로젝트 분석</text>
+  </g>
+
+  <!-- Arrow 1 -->
+  <path d="M 270,190 Q 310,190 330,190" stroke="#9CA3AF" stroke-width="3" fill="none" marker-end="url(#arrowGray)"/>
+
+  <!-- Stage 2: AI 분석 -->
+  <g transform="translate(340, 120)">
+    <!-- Number badge -->
+    <circle cx="90" cy="0" r="18" fill="#312E81"/>
+    <text x="90" y="7" font-family="Arial, sans-serif" font-size="14" font-weight="700" fill="white" text-anchor="middle">2</text>
+
+    <!-- Card -->
+    <rect x="0" y="20" width="180" height="140" rx="20" fill="url(#stage2Gradient)" filter="url(#cardShadow)"/>
+    <rect x="2" y="22" width="176" height="136" rx="19" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+
+    <!-- Icon: Brain with circuit -->
+    <g transform="translate(65, 50)">
+      <ellipse cx="25" cy="25" rx="24" ry="28" fill="white" opacity="0.95"/>
+      <circle cx="15" cy="20" r="3" fill="#312E81"/>
+      <circle cx="35" cy="20" r="3" fill="#312E81"/>
+      <path d="M 15,28 Q 25,35 35,28" stroke="#312E81" stroke-width="2" fill="none"/>
+      <circle cx="10" cy="15" r="2" fill="#7C3AED"/>
+      <circle cx="40" cy="15" r="2" fill="#7C3AED"/>
+      <circle cx="25" cy="10" r="2" fill="#7C3AED"/>
+      <line x1="10" y1="15" x2="25" y2="10" stroke="#7C3AED" stroke-width="1"/>
+      <line x1="40" y1="15" x2="25" y2="10" stroke="#7C3AED" stroke-width="1"/>
+    </g>
+
+    <!-- Label -->
+    <text x="90" y="115" font-family="Arial, sans-serif" font-size="20" font-weight="700" fill="white" text-anchor="middle">AI 분석</text>
+    <text x="90" y="140" font-family="Arial, sans-serif" font-size="13" fill="white" opacity="0.9" text-anchor="middle">구조 이해</text>
+  </g>
+
+  <!-- Arrow 2 -->
+  <path d="M 530,190 Q 570,190 590,190" stroke="#9CA3AF" stroke-width="3" fill="none" marker-end="url(#arrowGray)"/>
+
+  <!-- Stage 3: 문서 생성 -->
+  <g transform="translate(600, 120)">
+    <!-- Number badge -->
+    <circle cx="90" cy="0" r="18" fill="#6B21A8"/>
+    <text x="90" y="7" font-family="Arial, sans-serif" font-size="14" font-weight="700" fill="white" text-anchor="middle">3</text>
+
+    <!-- Card -->
+    <rect x="0" y="20" width="180" height="140" rx="20" fill="url(#stage3Gradient)" filter="url(#cardShadow)"/>
+    <rect x="2" y="22" width="176" height="136" rx="19" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+
+    <!-- Icon: Document with magic wand -->
+    <g transform="translate(70, 50)">
+      <rect x="0" y="0" width="30" height="40" rx="3" fill="white" opacity="0.95"/>
+      <line x1="6" y1="8" x2="24" y2="8" stroke="#6B21A8" stroke-width="2"/>
+      <line x1="6" y1="14" x2="24" y2="14" stroke="#6B21A8" stroke-width="2"/>
+      <line x1="6" y1="20" x2="18" y2="20" stroke="#6B21A8" stroke-width="2"/>
+      <line x1="6" y1="26" x2="22" y2="26" stroke="#6B21A8" stroke-width="2"/>
+      <line x1="6" y1="32" x2="16" y2="32" stroke="#6B21A8" stroke-width="2"/>
+      <!-- Magic wand -->
+      <line x1="32" y1="8" x2="42" y2="-2" stroke="white" stroke-width="2.5"/>
+      <polygon points="40,-4 42,-2 44,-4" fill="white"/>
+      <circle cx="34" cy="6" r="1.5" fill="white"/>
+      <circle cx="40" cy="2" r="1.5" fill="white"/>
+    </g>
+
+    <!-- Label -->
+    <text x="90" y="115" font-family="Arial, sans-serif" font-size="20" font-weight="700" fill="white" text-anchor="middle">문서 생성</text>
+    <text x="90" y="140" font-family="Arial, sans-serif" font-size="13" fill="white" opacity="0.9" text-anchor="middle">Markdown 작성</text>
+  </g>
+
+  <!-- Arrow 3 -->
+  <path d="M 790,190 Q 830,190 850,190" stroke="#9CA3AF" stroke-width="3" fill="none" marker-end="url(#arrowGray)"/>
+
+  <!-- Stage 4: 품질 검토 -->
+  <g transform="translate(860, 120)">
+    <!-- Number badge -->
+    <circle cx="90" cy="0" r="18" fill="#BE185D"/>
+    <text x="90" y="7" font-family="Arial, sans-serif" font-size="14" font-weight="700" fill="white" text-anchor="middle">4</text>
+
+    <!-- Card -->
+    <rect x="0" y="20" width="180" height="140" rx="20" fill="url(#stage4Gradient)" filter="url(#cardShadow)"/>
+    <rect x="2" y="22" width="176" height="136" rx="19" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+
+    <!-- Icon: Magnifying glass with star -->
+    <g transform="translate(70, 55)">
+      <circle cx="18" cy="18" r="15" fill="none" stroke="white" stroke-width="3" opacity="0.95"/>
+      <line x1="28" y1="28" x2="38" y2="38" stroke="white" stroke-width="3" stroke-linecap="round"/>
+      <polygon points="18,10 20,15 25,16 21,20 22,25 18,22 14,25 15,20 11,16 16,15" fill="white"/>
+    </g>
+
+    <!-- Label -->
+    <text x="90" y="115" font-family="Arial, sans-serif" font-size="20" font-weight="700" fill="white" text-anchor="middle">품질 검토</text>
+    <text x="90" y="140" font-family="Arial, sans-serif" font-size="13" fill="white" opacity="0.9" text-anchor="middle">100점 평가</text>
+  </g>
+
+  <!-- Arrow 4 -->
+  <path d="M 1050,190 Q 1090,190 1110,190" stroke="#9CA3AF" stroke-width="3" fill="none" marker-end="url(#arrowGray)"/>
+
+  <!-- Stage 5: Notion 업로드 -->
+  <g transform="translate(1120, 120)">
+    <!-- Number badge -->
+    <circle cx="90" cy="0" r="18" fill="#0369A1"/>
+    <text x="90" y="7" font-family="Arial, sans-serif" font-size="14" font-weight="700" fill="white" text-anchor="middle">5</text>
+
+    <!-- Card -->
+    <rect x="0" y="20" width="180" height="140" rx="20" fill="url(#stage5Gradient)" filter="url(#cardShadow)"/>
+    <rect x="2" y="22" width="176" height="136" rx="19" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+
+    <!-- Icon: Cloud with checkmark -->
+    <g transform="translate(65, 50)">
+      <path d="M 15,18 Q 15,10 25,10 Q 35,10 35,18 L 33,18 Q 33,12 25,12 Q 17,12 17,18 Z" fill="white"/>
+      <path d="M 12,18 Q 12,14 17,14 L 17,18 L 12,18 Z" fill="white"/>
+      <path d="M 35,18 Q 40,18 40,23 Q 40,28 35,28 L 15,28 Q 10,28 10,23 Q 10,18 15,18" fill="white"/>
+      <!-- Checkmark -->
+      <path d="M 18,22 L 22,26 L 32,16" stroke="#0369A1" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    </g>
+
+    <!-- Label -->
+    <text x="90" y="115" font-family="Arial, sans-serif" font-size="20" font-weight="700" fill="white" text-anchor="middle">Notion 업로드</text>
+    <text x="90" y="140" font-family="Arial, sans-serif" font-size="13" fill="white" opacity="0.9" text-anchor="middle">자동 동기화</text>
+  </g>
+
+  <!-- Completion indicator -->
+  <g transform="translate(1330, 175)">
+    <circle cx="0" cy="0" r="25" fill="#10B981" filter="url(#cardShadow)"/>
+    <path d="M -8,0 L -3,5 L 8,-6" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  </g>
+
+  <!-- Time indicator -->
+  <g transform="translate(100, 320)">
+    <text x="0" y="0" font-family="Arial, sans-serif" font-size="14" font-weight="600" fill="#6B7280">총 소요 시간:</text>
+    <text x="120" y="0" font-family="Arial, sans-serif" font-size="24" font-weight="700" fill="#10B981">5분</text>
+    <text x="180" y="0" font-family="Arial, sans-serif" font-size="14" fill="#9CA3AF">(전통적 방식: 8시간)</text>
+  </g>
+
+  <!-- Footer -->
+  <text x="700" y="370" font-family="Arial, sans-serif" font-size="13" fill="#9CA3AF" text-anchor="middle">
+    모든 단계가 자동으로 진행되며, 사용자는 결과만 확인하면 됩니다
+  </text>
+</svg>
