@@ -1,0 +1,162 @@
+<svg width="900" height="500" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FAFAFA"/>
+      <stop offset="100%" style="stop-color:#FFFFFF"/>
+    </linearGradient>
+
+    <linearGradient id="code" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#059669"/>
+      <stop offset="100%" style="stop-color:#22C55E"/>
+    </linearGradient>
+
+    <linearGradient id="review" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#7C3AED"/>
+      <stop offset="100%" style="stop-color:#A855F7"/>
+    </linearGradient>
+
+    <linearGradient id="notion" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#F59E0B"/>
+      <stop offset="100%" style="stop-color:#FBBF24"/>
+    </linearGradient>
+
+    <linearGradient id="image" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#DB2777"/>
+      <stop offset="100%" style="stop-color:#F472B6"/>
+    </linearGradient>
+
+    <linearGradient id="prompt" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#2563EB"/>
+      <stop offset="100%" style="stop-color:#60A5FA"/>
+    </linearGradient>
+
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-opacity="0.15"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="900" height="500" fill="url(#bg)"/>
+
+  <!-- Title -->
+  <text x="450" y="40" font-family="Arial, sans-serif" font-size="28" font-weight="700" fill="#1F2937" text-anchor="middle">
+    5개 Agent 협업 구조
+  </text>
+
+  <!-- User Input -->
+  <g transform="translate(400, 80)">
+    <rect width="100" height="50" rx="10" fill="#F3F4F6" stroke="#9CA3AF" stroke-width="2" filter="url(#shadow)"/>
+    <text x="50" y="32" font-family="Arial, sans-serif" font-size="14" font-weight="600" fill="#374151" text-anchor="middle">
+      👤 사용자
+    </text>
+  </g>
+
+  <!-- Orchestrator -->
+  <g transform="translate(350, 170)">
+    <rect width="200" height="60" rx="12" fill="#FFF7ED" stroke="#EA580C" stroke-width="2.5" filter="url(#shadow)"/>
+    <text x="100" y="25" font-family="Arial, sans-serif" font-size="13" font-weight="600" fill="#9A3412" text-anchor="middle">
+      🎯 Orchestrator
+    </text>
+    <text x="100" y="45" font-family="Arial, sans-serif" font-size="11" fill="#C2410C" text-anchor="middle">
+      대화 분석 및 Agent 조율
+    </text>
+  </g>
+
+  <!-- Agent Cards -->
+
+  <!-- Code Agent -->
+  <g transform="translate(50, 280)">
+    <rect width="140" height="90" rx="10" fill="url(#code)" filter="url(#shadow)"/>
+    <text x="70" y="30" font-family="Arial, sans-serif" font-size="20" fill="white" text-anchor="middle">📝</text>
+    <text x="70" y="55" font-family="Arial, sans-serif" font-size="13" font-weight="600" fill="white" text-anchor="middle">
+      Code Agent
+    </text>
+    <text x="70" y="75" font-family="Arial, sans-serif" font-size="10" fill="white" opacity="0.9" text-anchor="middle">
+      코드 분석
+    </text>
+  </g>
+
+  <!-- Review Agent -->
+  <g transform="translate(220, 280)">
+    <rect width="140" height="90" rx="10" fill="url(#review)" filter="url(#shadow)"/>
+    <text x="70" y="30" font-family="Arial, sans-serif" font-size="20" fill="white" text-anchor="middle">⭐</text>
+    <text x="70" y="55" font-family="Arial, sans-serif" font-size="13" font-weight="600" fill="white" text-anchor="middle">
+      Review Agent
+    </text>
+    <text x="70" y="75" font-family="Arial, sans-serif" font-size="10" fill="white" opacity="0.9" text-anchor="middle">
+      품질 검토
+    </text>
+  </g>
+
+  <!-- Notion Agent -->
+  <g transform="translate(390, 280)">
+    <rect width="140" height="90" rx="10" fill="url(#notion)" filter="url(#shadow)"/>
+    <text x="70" y="30" font-family="Arial, sans-serif" font-size="20" fill="white" text-anchor="middle">📤</text>
+    <text x="70" y="55" font-family="Arial, sans-serif" font-size="13" font-weight="600" fill="white" text-anchor="middle">
+      Notion Agent
+    </text>
+    <text x="70" y="75" font-family="Arial, sans-serif" font-size="10" fill="white" opacity="0.9" text-anchor="middle">
+      Notion 업로드
+    </text>
+  </g>
+
+  <!-- Image Agent -->
+  <g transform="translate(560, 280)">
+    <rect width="140" height="90" rx="10" fill="url(#image)" filter="url(#shadow)"/>
+    <text x="70" y="30" font-family="Arial, sans-serif" font-size="20" fill="white" text-anchor="middle">🎨</text>
+    <text x="70" y="55" font-family="Arial, sans-serif" font-size="13" font-weight="600" fill="white" text-anchor="middle">
+      Image Agent
+    </text>
+    <text x="70" y="75" font-family="Arial, sans-serif" font-size="10" fill="white" opacity="0.9" text-anchor="middle">
+      다이어그램
+    </text>
+  </g>
+
+  <!-- Prompt Agent -->
+  <g transform="translate(730, 280)">
+    <rect width="140" height="90" rx="10" fill="url(#prompt)" filter="url(#shadow)"/>
+    <text x="70" y="30" font-family="Arial, sans-serif" font-size="20" fill="white" text-anchor="middle">⚙️</text>
+    <text x="70" y="55" font-family="Arial, sans-serif" font-size="13" font-weight="600" fill="white" text-anchor="middle">
+      Prompt Agent
+    </text>
+    <text x="70" y="75" font-family="Arial, sans-serif" font-size="10" fill="white" opacity="0.9" text-anchor="middle">
+      프롬프트 수정
+    </text>
+  </g>
+
+  <!-- State Manager -->
+  <g transform="translate(350, 420)">
+    <rect width="200" height="50" rx="10" fill="#F5F5F5" stroke="#6B7280" stroke-width="2" filter="url(#shadow)"/>
+    <text x="100" y="32" font-family="Arial, sans-serif" font-size="13" font-weight="600" fill="#4B5563" text-anchor="middle">
+      💾 State Manager
+    </text>
+  </g>
+
+  <!-- Connection Lines -->
+
+  <!-- User to Orchestrator -->
+  <line x1="450" y1="130" x2="450" y2="170" stroke="#9CA3AF" stroke-width="2.5" stroke-dasharray="none"/>
+  <polygon points="450,170 445,160 455,160" fill="#9CA3AF"/>
+
+  <!-- Orchestrator to Agents -->
+  <path d="M 450 230 Q 120 260 120 280" stroke="url(#code)" stroke-width="2.5" fill="none"/>
+  <path d="M 450 230 Q 290 260 290 280" stroke="url(#review)" stroke-width="2.5" fill="none"/>
+  <path d="M 450 230 L 460 280" stroke="url(#notion)" stroke-width="2.5" fill="none"/>
+  <path d="M 450 230 Q 630 260 630 280" stroke="url(#image)" stroke-width="2.5" fill="none"/>
+  <path d="M 450 230 Q 800 260 800 280" stroke="url(#prompt)" stroke-width="2.5" fill="none"/>
+
+  <!-- Agents to State Manager -->
+  <path d="M 120 370 Q 120 395 350 435" stroke="#6B7280" stroke-width="2" fill="none" stroke-dasharray="4,4" opacity="0.5"/>
+  <path d="M 290 370 Q 290 395 370 420" stroke="#6B7280" stroke-width="2" fill="none" stroke-dasharray="4,4" opacity="0.5"/>
+  <path d="M 460 370 L 450 420" stroke="#6B7280" stroke-width="2" fill="none" stroke-dasharray="4,4" opacity="0.5"/>
+  <path d="M 630 370 Q 630 395 530 420" stroke="#6B7280" stroke-width="2" fill="none" stroke-dasharray="4,4" opacity="0.5"/>
+  <path d="M 800 370 Q 800 395 550 435" stroke="#6B7280" stroke-width="2" fill="none" stroke-dasharray="4,4" opacity="0.5"/>
+
+  <!-- Labels -->
+  <text x="520" y="260" font-family="Arial, sans-serif" font-size="11" fill="#6B7280" font-style="italic">
+    작업 할당
+  </text>
+  <text x="230" y="400" font-family="Arial, sans-serif" font-size="11" fill="#6B7280" font-style="italic">
+    상태 저장
+  </text>
+</svg>
