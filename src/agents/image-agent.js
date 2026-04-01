@@ -7,10 +7,13 @@
 
 import fs from 'fs';
 import path from 'path';
+import { SvgToPngConverter } from '../utils/svg-to-png.js';
 
 export class ImageAgent {
   constructor(config = {}) {
     this.outputDir = config.outputDir || './generated-images';
+    this.converter = new SvgToPngConverter();
+    this.generatePng = config.generatePng !== false; // 기본값: PNG 생성
 
     // 출력 디렉토리 생성
     if (!fs.existsSync(this.outputDir)) {
@@ -55,14 +58,37 @@ export class ImageAgent {
 
     console.log(`[Image Agent] SVG 저장 완료: ${filepath}`);
 
-    return {
+    const result = {
       success: true,
       title: title,
       type: type,
       filename: filename,
       filepath: filepath,
-      relativePath: `./generated-images/${filename}`
+      relativePath: `./generated-images/${filename}`,
+      svgPath: filepath
     };
+
+    // PNG 변환 (옵션)
+    if (this.generatePng) {
+      try {
+        const pngFilename = filename.replace('.svg', '.png');
+        const pngPath = path.join(this.outputDir, pngFilename);
+
+        const convertResult = await this.converter.convertSvgToPng(filepath, pngPath);
+
+        if (convertResult.success) {
+          result.pngFilename = pngFilename;
+          result.pngPath = pngPath;
+          result.pngRelativePath = `./generated-images/${pngFilename}`;
+          console.log(`[Image Agent] PNG 변환 완료: ${pngFilename}`);
+        }
+      } catch (error) {
+        console.warn(`[Image Agent] PNG 변환 실패 (SVG는 생성됨):`, error.message);
+        // PNG 변환 실패해도 SVG는 성공이므로 계속 진행
+      }
+    }
+
+    return result;
   }
 
   /**

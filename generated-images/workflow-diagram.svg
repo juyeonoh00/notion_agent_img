@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1300">
+  <defs>
+    <style>
+      .step-box { fill: #1e40af; stroke: #3b82f6; stroke-width: 2; rx: 6; }
+      .step-text { fill: white; font-family: 'Segoe UI', Arial, sans-serif; font-size: 13px; font-weight: 500; text-anchor: middle; }
+      .title-text { fill: white; font-family: 'Segoe UI', Arial, sans-serif; font-size: 20px; font-weight: 700; text-anchor: middle; }
+      .arrow { stroke: #60a5fa; stroke-width: 2; fill: none; marker-end: url(#arrowhead); }
+      .num-circle { fill: #7c3aed; stroke: #a78bfa; stroke-width: 2; }
+      .num-text { fill: white; font-family: 'Segoe UI', Arial, sans-serif; font-size: 14px; font-weight: 700; text-anchor: middle; }
+    </style>
+    <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#60a5fa" />
+    </marker>
+  </defs>
+  <rect width="900" height="1300" fill="#0f172a"/>
+  <text x="450" y="40" class="title-text">워크플로우 다이어그램</text>
+  
+  <circle cx="70" cy="90" r="18" class="num-circle"/>
+  <text x="70" y="96" class="num-text">1</text>
+  <rect x="120" y="70" width="660" height="60" class="step-box"/>
+  <text x="450" y="105" class="step-text">1. [프로젝트 개요](#프로젝트-개요)</text>
+  <path d="M 450 130 L 450 190" class="arrow"/>
+  
+  <circle cx="70" cy="210" r="18" class="num-circle"/>
+  <text x="70" y="216" class="num-text">2</text>
+  <rect x="120" y="190" width="660" height="60" class="step-box"/>
+  <text x="450" y="225" class="step-text">2. [시스템 아키텍처](#시스템-아키텍처)</text>
+  <path d="M 450 250 L 450 310" class="arrow"/>
+  
+  <circle cx="70" cy="330" r="18" class="num-circle"/>
+  <text x="70" y="336" class="num-text">3</text>
+  <rect x="120" y="310" width="660" height="60" class="step-box"/>
+  <text x="450" y="345" class="step-text">3. [API 문서](#api-문서)</text>
+  <path d="M 450 370 L 450 430" class="arrow"/>
+  
+  <circle cx="70" cy="450" r="18" class="num-circle"/>
+  <text x="70" y="456" class="num-text">4</text>
+  <rect x="120" y="430" width="660" height="60" class="step-box"/>
+  <text x="450" y="465" class="step-text">4. [데이터베이스](#데이터베이스)</text>
+  <path d="M 450 490 L 450 550" class="arrow"/>
+  
+  <circle cx="70" cy="570" r="18" class="num-circle"/>
+  <text x="70" y="576" class="num-text">5</text>
+  <rect x="120" y="550" width="660" height="60" class="step-box"/>
+  <text x="450" y="585" class="step-text">5. [설치 및 설정](#설치-및-설정)</text>
+  <path d="M 450 610 L 450 670" class="arrow"/>
+  
+  <circle cx="70" cy="690" r="18" class="num-circle"/>
+  <text x="70" y="696" class="num-text">6</text>
+  <rect x="120" y="670" width="660" height="60" class="step-box"/>
+  <text x="450" y="705" class="step-text">6. [테스트](#테스트)</text>
+  <path d="M 450 730 L 450 790" class="arrow"/>
+  
+  <circle cx="70" cy="810" r="18" class="num-circle"/>
+  <text x="70" y="816" class="num-text">7</text>
+  <rect x="120" y="790" width="660" height="60" class="step-box"/>
+  <text x="450" y="825" class="step-text">1. 클라이언트가 HTTP 요청 전송</text>
+  <path d="M 450 850 L 450 910" class="arrow"/>
+  
+  <circle cx="70" cy="930" r="18" class="num-circle"/>
+  <text x="70" y="936" class="num-text">8</text>
+  <rect x="120" y="910" width="660" height="60" class="step-box"/>
+  <text x="450" y="945" class="step-text">2. API 계층에서 요청 수신 및 검증</text>
+  <path d="M 450 970 L 450 1030" class="arrow"/>
+  
+  <circle cx="70" cy="1050" r="18" class="num-circle"/>
+  <text x="70" y="1056" class="num-text">9</text>
+  <rect x="120" y="1030" width="660" height="60" class="step-box"/>
+  <text x="450" y="1065" class="step-text">3. 비즈니스 로직 계층에서 처리</text>
+  <path d="M 450 1090 L 450 1150" class="arrow"/>
+  
+  <circle cx="70" cy="1170" r="18" class="num-circle"/>
+  <text x="70" y="1176" class="num-text">10</text>
+  <rect x="120" y="1150" width="660" height="60" class="step-box"/>
+  <text x="450" y="1185" class="step-text">4. 데이터 접근 계층에서 데이터베이스 조회</text>
+  
+  
+</svg>

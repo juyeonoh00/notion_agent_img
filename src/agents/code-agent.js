@@ -66,7 +66,7 @@ export class CodeAgent {
     // 2. 코드 블록 짝 맞추기 (``` 개수가 홀수)
     const codeBlockCount = (fixed.match(/```/g) || []).length;
     if (codeBlockCount % 2 !== 0) {
-      issues.push(`코드 블록 닫기 누락 (``` 개수: ${codeBlockCount})`);
+      issues.push(`코드 블록 닫기 누락 (개수: ${codeBlockCount})`);
       // 자동 수정: 마지막에 ``` 추가
       fixed += '\n```\n';
     }
@@ -85,10 +85,14 @@ export class CodeAgent {
     fixed = fixed.replace(/^-([^\s-])/gm, '- $1');
     fixed = fixed.replace(/^\*([^\s*])/gm, '* $1');
 
-    // 6. 코드 블록에 언어 지정 확인 및 추가 (```\n → ```bash\n or ```javascript\n)
-    fixed = fixed.replace(/```\n(npm |curl |git |cd |mkdir |ls |rm )/gm, '```bash\n$1');
-    fixed = fixed.replace(/```\n(const |let |var |function |import |export |async |class )/gm, '```javascript\n$1');
-    fixed = fixed.replace(/```\n(\{|\[|")/gm, '```json\n$1');
+    // 6. 코드 블록에 언어 지정 확인 및 추가
+    const codeBlockPattern1 = /```\n(npm |curl |git |cd |mkdir |ls |rm )/gm;
+    const codeBlockPattern2 = /```\n(const |let |var |function |import |export |async |class )/gm;
+    const codeBlockPattern3 = /```\n(\{|\[|")/gm;
+
+    fixed = fixed.replace(codeBlockPattern1, '```bash\n$1');
+    fixed = fixed.replace(codeBlockPattern2, '```javascript\n$1');
+    fixed = fixed.replace(codeBlockPattern3, '```json\n$1');
 
     if (issues.length > 0) {
       console.log(`[Code Agent] ${filename}: ${issues.length}개 마크다운 이슈 수정함`);

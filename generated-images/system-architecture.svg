@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900">
+  <defs>
+    <style>
+      .box { fill: #1e3a8a; stroke: #3b82f6; stroke-width: 2; rx: 8; }
+      .text { fill: white; font-family: 'Segoe UI', Arial, sans-serif; font-size: 14px; font-weight: 600; text-anchor: middle; }
+      .title { fill: white; font-family: 'Segoe UI', Arial, sans-serif; font-size: 20px; font-weight: 700; text-anchor: middle; }
+      .arrow { stroke: #60a5fa; stroke-width: 2; fill: none; marker-end: url(#arrowhead); }
+    </style>
+    <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#60a5fa" />
+    </marker>
+  </defs>
+  <rect width="1200" height="900" fill="#0f172a"/>
+  <text x="600" y="40" class="title">시스템 아키텍처</text>
+  
+  <rect x="300" y="80" width="600" height="70" class="box"/>
+  <text x="600" y="120" class="text">## 목차</text>
+  <path d="M 600 150 L 600 180" class="arrow"/>
+  
+  <rect x="300" y="180" width="600" height="70" class="box"/>
+  <text x="600" y="220" class="text">## 프로젝트 개요</text>
+  <path d="M 600 250 L 600 280" class="arrow"/>
+  
+  <rect x="300" y="280" width="600" height="70" class="box"/>
+  <text x="600" y="320" class="text">## 시스템 아키텍처</text>
+  <path d="M 600 350 L 600 380" class="arrow"/>
+  
+  <rect x="300" y="380" width="600" height="70" class="box"/>
+  <text x="600" y="420" class="text">### 계층 구조</text>
+  <path d="M 600 450 L 600 480" class="arrow"/>
+  
+  <rect x="300" y="480" width="600" height="70" class="box"/>
+  <text x="600" y="520" class="text">### 주요 컴포넌트</text>
+  <path d="M 600 550 L 600 580" class="arrow"/>
+  
+  <rect x="300" y="580" width="600" height="70" class="box"/>
+  <text x="600" y="620" class="text">### 디렉토리 설명</text>
+  <path d="M 600 650 L 600 680" class="arrow"/>
+  
+  <rect x="300" y="680" width="600" height="70" class="box"/>
+  <text x="600" y="720" class="text">### 데이터 흐름</text>
+  <path d="M 600 750 L 600 780" class="arrow"/>
+  
+  <rect x="300" y="780" width="600" height="70" class="box"/>
+  <text x="600" y="820" class="text">## API 문서</text>
+  
+  
+</svg>
