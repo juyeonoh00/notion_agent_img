@@ -469,7 +469,7 @@ ${analysis.dependencies.runtime.length > 0 ?
   }
 
   /**
-   * 아키텍처 섹션 생성 (글자수 제어 적용, Mermaid 제거)
+   * 아키텍처 섹션 생성 (blockquote 및 들여쓰기 적용)
    */
   generateArchitectureSection(analysis) {
     const structureExplanation = this.explainStructure(analysis.structure);
@@ -478,11 +478,13 @@ ${analysis.dependencies.runtime.length > 0 ?
 
 ### 계층 구조
 
-**시스템 구성:**
-- 클라이언트 계층
-- API 계층
-- 비즈니스 로직 계층
-- 데이터 접근 계층
+시스템은 다음과 같이 구성됩니다:
+
+> **주요 계층:**
+> - 클라이언트 계층
+> - API 계층
+> - 비즈니스 로직 계층
+> - 데이터 접근 계층
 
 ### 주요 컴포넌트
 
@@ -490,12 +492,14 @@ ${structureExplanation}
 
 ### 데이터 흐름
 
-**요청 처리 과정:**
-1. 클라이언트가 HTTP 요청 전송
-2. API 계층에서 요청 수신 및 검증
-3. 비즈니스 로직 계층에서 처리
-4. 데이터 접근 계층에서 데이터베이스 조회
-5. 결과를 역순으로 반환하여 클라이언트에 응답
+요청은 다음 단계로 처리됩니다:
+
+> **처리 과정:**
+> 1. 클라이언트가 HTTP 요청 전송
+> 2. API 계층에서 요청 수신 및 검증
+> 3. 비즈니스 로직 계층에서 처리
+> 4. 데이터 접근 계층에서 데이터베이스 조회
+> 5. 결과를 역순으로 반환하여 클라이언트에 응답
 
 ---
 
@@ -505,39 +509,42 @@ ${structureExplanation}
   }
 
   /**
-   * API 섹션 생성
+   * API 섹션 생성 (blockquote 적용)
    */
   generateAPISection(analysis) {
+    const endpoints = analysis.apiEndpoints.length > 0 ?
+      analysis.apiEndpoints.map(ep => `> **${ep.method} ${ep.path}**\n> ${ep.description || '설명 없음'}`).join('\n>\n')
+      :
+      `> **GET /api/resource** - 목록 조회\n> **POST /api/resource** - 생성\n> **GET /api/resource/:id** - 단건 조회\n> **PUT /api/resource/:id** - 수정\n> **DELETE /api/resource/:id** - 삭제`;
+
     return `## API 문서
 
 ### 엔드포인트 목록
 
-${analysis.apiEndpoints.length > 0 ?
-  analysis.apiEndpoints.map(ep => `**${ep.method} ${ep.path}**\n${ep.description || ''}`).join('\n\n')
-  :
-  `**GET /api/resource** - 목록 조회\n**POST /api/resource** - 생성\n**GET /api/resource/:id** - 단건 조회\n**PUT /api/resource/:id** - 수정\n**DELETE /api/resource/:id** - 삭제`
-}
+${endpoints}
 
 ### 인증
 
-\`\`\`bash
-curl -H "Authorization: Bearer TOKEN" https://api.example.com/endpoint
-\`\`\`
+인증은 Bearer 토큰 방식을 사용합니다:
+
+> \`\`\`bash
+> curl -H "Authorization: Bearer TOKEN" https://api.example.com/endpoint
+> \`\`\`
 
 ### 요청/응답 예시
 
-\`\`\`json
-// 요청
-{
-  "field": "value"
-}
-
-// 응답
-{
-  "status": "success",
-  "data": {}
-}
-\`\`\`
+> \`\`\`json
+> // 요청
+> {
+>   "field": "value"
+> }
+>
+> // 응답
+> {
+>   "status": "success",
+>   "data": {}
+> }
+> \`\`\`
 
 ---
 
@@ -545,24 +552,25 @@ curl -H "Authorization: Bearer TOKEN" https://api.example.com/endpoint
   }
 
   /**
-   * 데이터베이스 섹션 생성
+   * 데이터베이스 섹션 생성 (blockquote 적용)
    */
   generateDatabaseSection(analysis) {
+    const tables = analysis.database.tables.length > 0 ?
+      analysis.database.tables.map(table => `> - **${table.name}**`).join('\n')
+      :
+      `> - users\n> - resources`;
+
     return `## 데이터베이스
 
 ### 테이블 목록
 
-${analysis.database.tables.length > 0 ?
-  analysis.database.tables.map(table => `- **${table.name}**`).join('\n')
-  :
-  `- users\n- resources`
-}
+${tables}
 
 ### 쿼리 예시
 
-\`\`\`sql
-SELECT * FROM users WHERE id = ?;
-\`\`\`
+> \`\`\`sql
+> SELECT * FROM users WHERE id = ?;
+> \`\`\`
 
 ---
 
@@ -599,30 +607,30 @@ ${this.getRequirements(analysis)}
   }
 
   /**
-   * 테스트 섹션 생성
+   * 테스트 섹션 생성 (blockquote 적용)
    */
   generateTestSection(analysis) {
     return `## 테스트
 
 ### 테스트 실행
 
-\`\`\`bash
-npm test
-\`\`\`
+> \`\`\`bash
+> npm test
+> \`\`\`
 
 ### 테스트 작성 예시
 
-\`\`\`javascript
-describe('함수명', () => {
-  it('정상 동작', () => {
-    expect(result).toBe(expected);
-  });
-});
-\`\`\`
+> \`\`\`javascript
+> describe('함수명', () => {
+>   it('정상 동작', () => {
+>     expect(result).toBe(expected);
+>   });
+> });
+> \`\`\`
 
 ### 커버리지 목표
 
-전체 코드의 80% 이상 커버리지 유지
+> 전체 코드의 80% 이상 커버리지 유지
 
 ---
 `;

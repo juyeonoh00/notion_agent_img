@@ -213,13 +213,16 @@ export class ImageAgent {
   }
 
   /**
-   * 텍스트에서 워크플로우 단계 추출
+   * 텍스트에서 워크플로우 단계 추출 (blockquote 지원)
    */
   extractWorkflowSteps(text) {
     const steps = [];
 
-    // 번호가 있는 리스트 항목 추출 (1. 2. 3.)
-    const numberedMatches = text.match(/(?:^|\n)\d+\.\s+(.+?)(?=\n|$)/gm);
+    // blockquote 제거한 텍스트 (패턴 매칭용)
+    const withoutBlockquote = text.replace(/^>\s*/gm, '');
+
+    // 번호가 있는 리스트 항목 추출 (1. 2. 3.) - blockquote 안팎 모두
+    const numberedMatches = withoutBlockquote.match(/(?:^|\n)\d+\.\s+(.+?)(?=\n|$)/gm);
     if (numberedMatches) {
       numberedMatches.forEach(match => {
         const step = match.replace(/^\d+\.\s+/, '').replace(/\*\*/g, '').trim();
@@ -238,7 +241,7 @@ export class ImageAgent {
       arrowLines.forEach(line => {
         const parts = line.split(/→|↓|->|➡/);
         parts.forEach(part => {
-          const step = part.replace(/\*\*/g, '').replace(/`/g, '').trim();
+          const step = part.replace(/\*\*/g, '').replace(/`/g, '').replace(/^>\s*/, '').trim();
           if (step.length > 3 && step.length < 100 && !step.startsWith('#')) {
             steps.push(step);
           }
@@ -246,18 +249,26 @@ export class ImageAgent {
       });
     }
 
+    console.log(`[Image Agent] 추출된 워크플로우 단계: ${steps.length}개`);
+    if (steps.length > 0) {
+      console.log(`  첫 번째 단계: "${steps[0]}"`);
+    }
+
     // 중복 제거
     return [...new Set(steps)];
   }
 
   /**
-   * 텍스트에서 컴포넌트/계층 추출
+   * 텍스트에서 컴포넌트/계층 추출 (blockquote 지원)
    */
   extractComponents(text) {
     const components = [];
 
+    // blockquote 제거
+    const withoutBlockquote = text.replace(/^>\s*/gm, '');
+
     // 헤딩 레벨 3, 4 추출 (###, ####)
-    const headingMatches = text.match(/(?:^|\n)###?\s+(.+?)(?=\n|$)/gm);
+    const headingMatches = withoutBlockquote.match(/(?:^|\n)###?\s+(.+?)(?=\n|$)/gm);
     if (headingMatches) {
       headingMatches.forEach(match => {
         const component = match.replace(/^###?\s+/, '').replace(/\*\*/g, '').trim();
@@ -267,9 +278,9 @@ export class ImageAgent {
       });
     }
 
-    // 불릿 포인트 추출
+    // 불릿 포인트 추출 (blockquote 안팎 모두)
     if (components.length < 3) {
-      const bulletMatches = text.match(/(?:^|\n)[-*]\s+\*?\*?(.+?)(?=\n|$)/gm);
+      const bulletMatches = withoutBlockquote.match(/(?:^|\n)[-*]\s+\*?\*?(.+?)(?=\n|$)/gm);
       if (bulletMatches) {
         bulletMatches.forEach(match => {
           const component = match.replace(/^[-*]\s+\*?\*?/, '').trim();
@@ -278,6 +289,11 @@ export class ImageAgent {
           }
         });
       }
+    }
+
+    console.log(`[Image Agent] 추출된 컴포넌트: ${components.length}개`);
+    if (components.length > 0) {
+      console.log(`  첫 번째 컴포넌트: "${components[0]}"`);
     }
 
     // 중복 제거
