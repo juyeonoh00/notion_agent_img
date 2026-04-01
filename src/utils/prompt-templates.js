@@ -49,7 +49,7 @@ When generating a single comprehensive document, include sections as applicable:
    - Components
    - Data flow
    - **MANDATORY: Include image diagrams for complex workflows/architecture**
-   - Use placeholder: `![시스템 아키텍처](./generated-images/architecture.svg)`
+   - Use placeholder: ![시스템 아키텍처](./generated-images/architecture.svg)
    - Image Agent will generate actual SVG images automatically
 
 3. **API Reference** (if API endpoints exist)
@@ -103,14 +103,14 @@ When generating a single comprehensive document, include sections as applicable:
 
 ## Space-Saving Formatting - MANDATORY
 - ✅ **Use blockquotes (>) EXTENSIVELY for all non-essential content**
-  - Examples, detailed instructions, optional content → ALWAYS use `> ` prefix
+  - Examples, detailed instructions, optional content → ALWAYS use > prefix
   - Keeps main content under character limit
   - Improves readability by hiding details until needed
 - ✅ **Use proper indentation in lists and nested content**
   - 2 spaces for nested list items
   - 4 spaces for code blocks in lists
   - Clear visual hierarchy
-- ✅ **Use code blocks (```) ONLY for actual code**
+- ✅ **Use code blocks ONLY for actual code**
   - Commands, API calls, configuration files
 - ❌ **DO NOT use code blocks for:**
   - Long explanations
@@ -118,7 +118,6 @@ When generating a single comprehensive document, include sections as applicable:
   - Example scenarios (use blockquotes instead)
 
 **Example - Space-Saving Format:**
-```markdown
 ### 설치 방법
 
 기본 설치:
@@ -132,7 +131,6 @@ When generating a single comprehensive document, include sections as applicable:
 > 1. 의존성 설치
 > 2. 환경 변수 설정
 > 3. 데이터베이스 마이그레이션
-```
 - **MANDATORY: Use declarative titles ONLY - NO question marks in headings**
   - ❌ BAD: "이 시스템이 무엇인가요?", "왜 사용해야 하나요?"
   - ✅ GOOD: "시스템 개요", "도입 배경 및 목적"
@@ -151,7 +149,7 @@ When generating a single comprehensive document, include sections as applicable:
   - Any workflow with 3+ steps → MUST be an image diagram
   - System architecture → MUST be an image diagram
   - Data flow → MUST be an image diagram
-  - Use markdown image syntax: `![Description](./generated-images/filename.svg)`
+  - Use markdown image syntax: ![Description](./generated-images/filename.svg)
   - Images dramatically improve readability and reduce character count
 - Write for clarity and comprehension
 - Include frontmatter:
@@ -168,8 +166,8 @@ When generating a single comprehensive document, include sections as applicable:
 **ABSOLUTE PROHIBITIONS:**
 
 ### 1. HTML Tags - COMPLETELY FORBIDDEN
-- ❌ **NEVER use ANY HTML tags**: \`<div>\`, \`<span>\`, \`<center>\`, \`<br>\`, \`<img>\`, \`<a>\`
-- ❌ **NO HTML attributes**: \`align="center"\`, \`style="..."\`, \`class="..."\`
+- ❌ **NEVER use ANY HTML tags**: <div>, <span>, <center>, <br>, <img>, <a>
+- ❌ **NO HTML attributes**: align="center", style="...", class="..."
 - ❌ **NO inline HTML of any kind**
 - ✅ **USE ONLY pure Markdown syntax**
 
@@ -375,7 +373,7 @@ ${JSON.stringify(docs, null, 2)}
 - Evaluate logical structure
 - Assess explanation clarity
 - ✅ **VERIFY: Proper indentation (2 spaces for nested lists, 4 for code)**
-- ✅ **VERIFY: Extensive use of `>` blockquotes for details**
+- ✅ **VERIFY: Extensive use of > blockquotes for details**
 - Determine accessibility for varying expertise levels
 
 ### 5. Visualization (MANDATORY CHECK)

@@ -15,25 +15,26 @@
  *    - 예: "시스템 아키텍처 이미지 만들어줘", "플로우차트 그려줘"
  */
 
+import { WorkerPool } from './worker-pool.js';
+import { PromptAgent } from './agents/prompt-agent.js';
+import { StateManager } from './state-manager.js';
 import { CodeAgent } from './agents/code-agent.js';
 import { ReviewAgent } from './agents/review-agent.js';
 import { NotionAgent } from './agents/notion-agent.js';
-import { ImageAgent } from './agents/image-agent.js';
-import { PromptAgent } from './agents/prompt-agent.js';
-import { StateManager } from './state-manager.js';
 
 export class ConversationalOrchestrator {
   constructor(config = {}) {
-    this.codeAgent = new CodeAgent();
-    this.reviewAgent = new ReviewAgent();
-    this.notionAgent = new NotionAgent(config.notionApiKey);
-    this.imageAgent = new ImageAgent({
-      openai: config.openaiApiKey,
-      gemini: config.geminiApiKey
-    });
+    // Worker Pool 초기화 (각 에이전트를 독립된 세션으로 실행)
+    this.workerPool = new WorkerPool(config);
 
+    // PromptAgent는 StateManager가 필요하므로 메인 스레드에서 실행
     this.stateManager = new StateManager(config.stateDir);
     this.promptAgent = new PromptAgent(this.stateManager);
+
+    // 동기 헬퍼 메서드용 로컬 에이전트 인스턴스
+    this.codeAgentHelper = new CodeAgent();
+    this.reviewAgentHelper = new ReviewAgent();
+    this.notionAgentHelper = new NotionAgent(config.notionApiKey);
 
     this.config = config;
 
@@ -43,6 +44,8 @@ export class ConversationalOrchestrator {
       criticalScoreThreshold: 70, // 치명적 이슈로 간주할 점수 기준
       autoFixEnabled: true         // 자동 수정 활성화 여부
     };
+
+    console.log('🚀 [Orchestrator] Multi-Agent 시스템 초기화 (독립 세션 모드)');
   }
 
   /**
@@ -50,6 +53,45 @@ export class ConversationalOrchestrator {
    */
   async initialize() {
     await this.stateManager.initialize();
+    await this.workerPool.initialize();
+
+    console.log('✅ [Orchestrator] 모든 에이전트 준비 완료');
+  }
+
+  /**
+   * 종료
+   */
+  async shutdown() {
+    console.log('[Orchestrator] 시스템 종료 중...');
+    await this.workerPool.terminateAll();
+  }
+
+  /**
+   * 헬퍼: Code Agent 호출
+   */
+  async callCodeAgent(method, args) {
+    return this.workerPool.callAgent('CODE', method, args);
+  }
+
+  /**
+   * 헬퍼: Review Agent 호출
+   */
+  async callReviewAgent(method, args) {
+    return this.workerPool.callAgent('REVIEW', method, args);
+  }
+
+  /**
+   * 헬퍼: Image Agent 호출
+   */
+  async callImageAgent(method, args) {
+    return this.workerPool.callAgent('IMAGE', method, args);
+  }
+
+  /**
+   * 헬퍼: Notion Agent 호출
+   */
+  async callNotionAgent(method, args) {
+    return this.workerPool.callAgent('NOTION', method, args);
   }
 
   /**
@@ -68,8 +110,10 @@ export class ConversationalOrchestrator {
       iteration++;
       console.log(`\n📋 검증 라운드 ${iteration}/${maxIterations}`);
 
-      // Review Agent 검토
-      const reviewResult = await this.reviewAgent.reviewDocuments(currentDocs);
+      // Review Agent 검토 (독립 세션)
+      const reviewResult = await this.workerPool.callAgent('REVIEW', 'reviewDocuments', {
+        documents: currentDocs
+      });
       lastReviewResult = reviewResult;
 
       const score = Math.round(reviewResult.overall_score);
@@ -247,8 +291,8 @@ export class ConversationalOrchestrator {
       // 5. 들여쓰기 자동 적용
       content = this.applyIndentation(content);
 
-      // 6. 마크다운 형식 자동 수정
-      content = this.codeAgent.validateAndFixMarkdown(content, filename);
+      // 6. 마크다운 형식 자동 수정 (동기 메서드 - 로컬 실행)
+      content = this.codeAgentHelper.validateAndFixMarkdown(content, filename);
 
       // 7. 연속된 빈 줄 정리 (3개 이상 → 2개로)
       content = content.replace(/\n{3,}/g, '\n\n');
@@ -575,9 +619,10 @@ export class ConversationalOrchestrator {
     const projectPath = intent.projectPath || this.stateManager.state.projectPath || process.cwd();
     this.stateManager.setProject(projectPath);
 
-    // 코드 분석 (요구사항 전달)
-    const codeResult = await this.codeAgent.generateDocs(projectPath, {
-      requirements: requirements
+    // 코드 분석 (요구사항 전달) - 독립 세션에서 실행
+    const codeResult = await this.workerPool.callAgent('CODE', 'generateDocs', {
+      projectPath: projectPath,
+      options: { requirements: requirements }
     });
 
     // 문서 저장 (상태에)
@@ -610,7 +655,9 @@ export class ConversationalOrchestrator {
 
     // 이미지 자동 생성 (SVG 다이어그램 생성 및 문서 삽입)
     console.log('\n🎨 Step 3/4: 이미지 자동 생성...');
-    const imageResult = await this.imageAgent.generateImagesForDocuments(finalDocs);
+    const imageResult = await this.callImageAgent('generateImagesForDocuments', {
+      documents: finalDocs
+    });
 
     if (imageResult.images && imageResult.images.length > 0) {
       console.log(`✅ ${imageResult.images.length}개 이미지 생성 완료`);
@@ -648,8 +695,9 @@ export class ConversationalOrchestrator {
 
     // Notion 페이지 자동 생성 (품질 검증 통과한 문서만)
     console.log('\n📄 Step 4/5: Notion 자동 업로드 중...');
-    const notionResult = await this.notionAgent.createNotionPages(finalDocs, {
-      parentPageId: this.config.notionParentPageId
+    const notionResult = await this.callNotionAgent('createNotionPages', {
+      docs: finalDocs,
+      options: { parentPageId: this.config.notionParentPageId }
     });
 
     let notionSummary = '';
@@ -807,15 +855,18 @@ export class ConversationalOrchestrator {
       };
     }
 
-    // Code Agent에 위임
-    const result = await this.codeAgent.improveDocument(document, intent.improvement);
+    // Code Agent에 위임 (독립 세션)
+    const result = await this.callCodeAgent('improveDocument', {
+      document: document,
+      improvement: intent.improvement
+    });
 
     if (result.success) {
       // StateManager 업데이트
       this.stateManager.setDocument(targetFile, result.document);
 
-      // Notion 동기화 (Notion Agent에 위임)
-      const syncResult = await this.notionAgent.syncToNotion(
+      // Notion 동기화 (Notion Agent에 위임 - StateManager 필요하므로 로컬 실행)
+      const syncResult = await this.notionAgentHelper.syncToNotion(
         { [targetFile]: result.document },
         this.stateManager,
         { updateMode: 'efficient' }
@@ -846,8 +897,8 @@ export class ConversationalOrchestrator {
   async handleGenerateImage(intent) {
     console.log(`\n🖼️ 이미지 프롬프트 생성 중: ${intent.imageType || 'technical'}`);
 
-    // Image Agent에 위임 (프롬프트만 생성)
-    const result = await this.imageAgent.generateImagePrompt({
+    // Image Agent에 위임 (프롬프트만 생성) - 독립 세션
+    const result = await this.callImageAgent('generateImagePrompt', {
       type: intent.imageType || 'technical',
       title: intent.description || '시스템 다이어그램',
       description: intent.description,
@@ -913,8 +964,8 @@ export class ConversationalOrchestrator {
       };
     }
 
-    const reviewResult = await this.reviewAgent.reviewDocuments(docs);
-    const report = this.reviewAgent.generateReport(reviewResult);
+    const reviewResult = await this.callReviewAgent('reviewDocuments', { documents: docs });
+    const report = this.reviewAgentHelper.generateReport(reviewResult);
 
     return {
       success: true,
@@ -941,9 +992,9 @@ export class ConversationalOrchestrator {
       };
     }
 
-    // Notion Agent에 위임
+    // Notion Agent에 위임 (StateManager 필요하므로 로컬 실행)
     const filenames = Object.keys(notionPages);
-    const result = await this.notionAgent.syncFromNotion(filenames, this.stateManager);
+    const result = await this.notionAgentHelper.syncFromNotion(filenames, this.stateManager);
 
     if (result.success) {
       // modifiedFiles 초기화 (Notion에서 가져온 것이므로)
@@ -1004,8 +1055,8 @@ export class ConversationalOrchestrator {
 
     console.log(`\n📤 ${modifiedFiles.length}개 파일 Notion에 업로드 중...\n`);
 
-    // Notion Agent에 위임
-    const result = await this.notionAgent.syncToNotion(
+    // Notion Agent에 위임 (StateManager 필요하므로 로컬 실행)
+    const result = await this.notionAgentHelper.syncToNotion(
       modifiedDocs,
       this.stateManager,
       { updateMode: 'efficient' }
