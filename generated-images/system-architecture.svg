@@ -42,7 +42,7 @@
   <path d="M 600 750 L 600 780" class="arrow"/>
   
   <rect x="300" y="780" width="600" height="70" class="box"/>
-  <text x="600" y="820" class="text">## API 문서</text>
+  <text x="600" y="820" class="text">## MCP 도구</text>
   
   
 </svg>
