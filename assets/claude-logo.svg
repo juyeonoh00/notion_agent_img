@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <g transform="translate(100,100)">
+    <!-- 12개의 꽃잎 — 중심에서 바깥으로 -->
+    <g fill="#D97757">
+      <rect x="-8" y="-70" width="16" height="70" rx="8" transform="rotate(0)"/>
+      <rect x="-8" y="-70" width="16" height="70" rx="8" transform="rotate(30)"/>
+      <rect x="-8" y="-70" width="16" height="70" rx="8" transform="rotate(60)"/>
+      <rect x="-8" y="-70" width="16" height="70" rx="8" transform="rotate(90)"/>
+      <rect x="-8" y="-70" width="16" height="70" rx="8" transform="rotate(120)"/>
+      <rect x="-8" y="-70" width="16" height="70" rx="8" transform="rotate(150)"/>
+      <rect x="-8" y="-70" width="16" height="70" rx="8" transform="rotate(180)"/>
+      <rect x="-8" y="-70" width="16" height="70" rx="8" transform="rotate(210)"/>
+      <rect x="-8" y="-70" width="16" height="70" rx="8" transform="rotate(240)"/>
+      <rect x="-8" y="-70" width="16" height="70" rx="8" transform="rotate(270)"/>
+      <rect x="-8" y="-70" width="16" height="70" rx="8" transform="rotate(300)"/>
+      <rect x="-8" y="-70" width="16" height="70" rx="8" transform="rotate(330)"/>
+    </g>
+    <!-- 중앙 원 -->
+    <circle cx="0" cy="0" r="20" fill="#D97757"/>
+  </g>
+</svg>
